@@ -1,0 +1,20 @@
+需要区分iterlist和iterset
+iterlist的值包含一个操作者的全部历史提交 iterset的值仅包含一个操作者的最新提交
+点赞/踩：
+标准库trait likeable：
+iterset like: option<bool>
+some(true)为点赞 some(false)为点踩 none为还原初始值
+用query by operator获取当前用户点赞/踩状态 由于是iterset 得到的是唯一值
+如果不需要点踩 添加额外validator拒绝some(false)值
+如果只统计点赞数 点赞数reducer每遇到一个some(true)值+1 忽略其他所有值
+如果统计点赞点踩总和 点赞点踩总和数reducer每遇到一个some(true)值+1 每遇到一个some(false)值-1 忽略none
+如果分别统计点赞点踩值 点赞数reducer每遇到一个some(true)值+1 忽略其他所有值 点踩数reducer每遇到一个some(false)值-1 忽略其他所有值
+（类）投币：
+标准库trait voteable：
+iterlist vote: uint
+defaultable mut vote-max: uint
+vote-max可添加额外validator改为const
+（defaultable属性可以在对象类型元数据里设置默认值 如果设置了默认值 创建对象时可以不提交该属性 查询时查询到的是默认值）
+属性vote的reducer by operator是将所有值加在一起 validator是检查reduced value by operator加上当前值是否超过vote-max
+用reduced value by operator获取当前用户投币数状态
+投币总数的reducer是将所有值加在一起
