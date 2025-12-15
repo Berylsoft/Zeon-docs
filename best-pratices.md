@@ -1,8 +1,8 @@
 # 最佳实践指南
 
-## 关于时间处理
+## 关于commit元数据
 
-原则上不建议在属性中存储能够通过提交时间确定的时间。
+原则上不建议在属性中存储能够通过commit元数据确定的数据，如能通过提交时间确定的时间。
 
 ## 内容的点赞/踩
 
@@ -49,11 +49,9 @@ trait voteable {
 }
 ```
 
-其中，属性`vote-max`可添加额外validator改为`const`；
+其中，属性`vote`有一个reducer by operator，reduced value类型为`uint`，名为`votes`，reducer行为是将所有值加在一起；validator是检查当前提交操作者的`votes`加上当前值是否超过`vote-max`；
 
-【defaultable属性可以在对象类型元数据里设置默认值 如果设置了默认值 创建对象时可以不提交该属性 查询时查询到的是默认值】
-
-属性`vote`有一个reducer by operator，reduced value类型为`uint`，名为`votes`，reducer行为是将所有值加在一起；validator是检查当前提交操作者的`votes`加上当前值是否超过`vote-max`。
+属性`vote-max`可添加额外validator改为`const`。
 
 ### 获取当前用户投币数状态
 
