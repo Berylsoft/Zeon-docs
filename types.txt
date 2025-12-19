@@ -1,0 +1,21 @@
+unit -> tuple<>
+bool -> enum
+
+uint
+int
+
+bytes -> uints
+string -> uints (vusv)
+
+option -> enum
+list -> list
+map -> list<tuple>
+tuple
+
+alias -> tuple<typeid, T>
+enum -> tuple<typeid, varid>
+choice -> tuple<typeid, varid, T>
+struct -> tuple<typeid, tuple>
+
+type -> enum
+typeid -> choice
