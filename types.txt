@@ -13,7 +13,7 @@ E enum -> tuple<typeid, varid>
 C choice -> tuple<typeid, varid, val>
 R struct -> tuple<typeid, tuple>
 
-T type -> uint (tag)
+T type -> tuple<uint (tag), val (or unit)>
 D typeid -> tuple<uint (typeid-type), val>
 
 
