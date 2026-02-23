@@ -5,8 +5,8 @@ N uints
 B bytes
 S string -> uints (vusv)
 
-L list -> tuple<type, tuple<T, T, ..>>
 P tuple
+L list -> tuple<type, tuple<T, T, ..>>
 
 A alias -> tuple<typeid, val>
 E enum -> tuple<typeid, varid>
